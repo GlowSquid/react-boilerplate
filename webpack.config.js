@@ -10,7 +10,10 @@ module.exports = {
     filename: "bundle.js"
   },
   devServer: {
-    contentBase: "./build"
+    contentBase: "./build",
+    port: 3000,
+    publicPath: "http://localhost:3000/",
+    hotOnly: true
   },
   module: {
     rules: [
@@ -20,15 +23,15 @@ module.exports = {
         use: ["babel-loader"]
       },
       {
-        test: /\.less$/,
+        test: /\.(css|less)$/,
         use: ["style-loader", "css-loader", "less-loader"]
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve("./public/index.html")
-    }),
-    new CopyPlugin([{ from: path.resolve("./public/favicon.ico") }])
+      template: path.resolve("./public/index.html"),
+      favicon: path.resolve("./public/favicon.ico")
+    })
   ]
 };
