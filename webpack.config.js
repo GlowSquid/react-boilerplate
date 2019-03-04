@@ -1,8 +1,8 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
+  devtool: "inline-source-map",
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "build"),
@@ -20,11 +20,15 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ["babel-loader", "eslint-loader"]
       },
       {
         test: /\.(css|less)$/,
         use: ["style-loader", "css-loader", "less-loader"]
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
+        use: ["file-loader"]
       }
     ]
   },
