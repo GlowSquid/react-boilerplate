@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { hot } from "react-hot-loader";
 
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
@@ -16,4 +17,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default hot(module)(App);
