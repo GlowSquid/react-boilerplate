@@ -1,4 +1,4 @@
-# React Boilerplate - WIP!
+# React Boilerplate
 
 **Babel-Webpack-React starter template.**
 

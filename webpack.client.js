@@ -1,25 +1,19 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  devtool: "inline-source-map",
+  target: "node",
   entry: "./client/src/index.js",
   output: {
-    path: path.resolve(__dirname, "build"),
-    publicPath: "/",
-    filename: "bundle.js"
-  },
-  devServer: {
-    contentBase: "./build",
-    port: 3000,
-    publicPath: "http://localhost:3000/",
-    hotOnly: true
+    path: path.resolve(__dirname, "build/public"),
+    publicPath: "/build/public",
+    filename: "client_bundle.js"
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        test: /\.js$/,
+        exclude: "/node_modules",
         use: ["babel-loader", "eslint-loader"]
       },
       {
@@ -32,10 +26,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve("./client/public/index.html"),
-      favicon: path.resolve("./client/public/favicon.ico")
-    })
-  ]
+  plugins: [new CopyPlugin([{ from: "./client/src/img/favicon.ico" }])]
 };

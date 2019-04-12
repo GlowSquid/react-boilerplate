@@ -1,5 +1,4 @@
 import React from "react";
-import { hot } from "react-hot-loader";
 import { Route } from "react-router-dom";
 
 import Header from "./components/Header/Header";
@@ -18,4 +17,4 @@ const App = () => {
   );
 };
 
-export default hot(module)(App);
+export default App;

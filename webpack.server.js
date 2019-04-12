@@ -6,8 +6,8 @@ module.exports = {
   entry: "./server/server.js",
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "bundle.js",
-    publicPath: "/build"
+    publicPath: "/build",
+    filename: "bundle.js"
   },
   module: {
     rules: [
